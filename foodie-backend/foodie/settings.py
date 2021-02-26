@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'deliver',
     'dishes',
     'restaurant',
+    #third party
+    'djangoratings',
+
 ]
 
 MIDDLEWARE = [
