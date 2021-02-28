@@ -14,6 +14,7 @@ class CustomerForm(forms.ModelForm):
             'customer_accountCreated',
             'customer_profilePicture',
             'customer_dateOfBirth',
+            'customer_rating'
         ]
 
 
@@ -24,3 +25,4 @@ class RawCustomerForm(forms.Form):
     customer_email = forms.EmailField(max_length=62)
     customer_phoneNo = forms.CharField(max_length=20, min_length=10)
     customer_dateOfBirth = forms.DateField()
+    customer_rating = forms.HiddenInput()
