@@ -1,7 +1,6 @@
 import React from 'react'
-import {Jumbotron, Container,Form,FormControl,Button,Figure,Image} from 'react-bootstrap'
+import {Jumbotron, Container,Form,FormControl,Button} from 'react-bootstrap'
 
-import RestaurantSection from './RestaurantSection'
 
 
 function MainDisplay() {
@@ -24,7 +23,6 @@ return(
   
   </Jumbotron>
 
- <RestaurantSection />
  
       </Container>
   

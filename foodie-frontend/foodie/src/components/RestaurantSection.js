@@ -1,12 +1,13 @@
 import React from 'react'
-import {Jumbotron,Button} from 'react-bootstrap'
+import {Jumbotron,Button, Container} from 'react-bootstrap'
 
 
 
 function RestaurantSection(){
 return(
 <div>
-<Jumbotron>
+  <Container>
+  <Jumbotron>
   <h1>List your restaurant on FOODIE</h1>
   <p>
   Would you like thousands of new customers to taste your amazing food? So would we!
@@ -17,6 +18,8 @@ Interested? Let's start our partnership today!
     <Button variant="primary">Get Started</Button>
   </p>
 </Jumbotron>
+  </Container>
+
 </div>
 
 )
