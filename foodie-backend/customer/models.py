@@ -13,4 +13,4 @@ class Customer(models.Model):
     customer_accountCreated = models.DateTimeField(auto_now_add=True)
     customer_profilePicture = models.ImageField(blank=True, null=True)
     customer_dateOfBirth = models.DateTimeField(blank=False)
-    customer_rating = models.FloatField(validators=[MinValueValidator(0.0), MaxValueValidator(5.0)], default=1.0)
+

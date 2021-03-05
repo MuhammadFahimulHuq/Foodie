@@ -1,5 +1,5 @@
 import React from 'react'
-import { Col, Container, Row } from 'react-bootstrap'
+import { Col, Container, Row,Form,Button } from 'react-bootstrap'
 import MainNavbar from '../../Components/MainNavbar'
 
 function Profile() {

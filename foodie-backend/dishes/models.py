@@ -1,5 +1,5 @@
 from django.db import models
-
+from restaurant.models import Restaurant
 
 # Create your models here.
 class Dishes(models.Model):
@@ -9,3 +9,5 @@ class Dishes(models.Model):
     Dishes_picture = models.ImageField(blank=True, null=True)
     Dishes_discount = models.FloatField()
     Dishes_category = models.CharField(max_length=100)
+    Restaurant_id = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
+
