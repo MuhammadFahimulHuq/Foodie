@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializer import CustomerSerializer
 from .models import Customer
-
+from django.contrib.auth.models import User
 
 # FETCH ALL CUSTOMERS
 @api_view(['GET'])
@@ -26,6 +26,7 @@ def customerList(request,pk):
 def createCustomer(request):
     serializer = CustomerSerializer(data=request.data)
     if serializer.is_valid():
+
         serializer.save()
     return Response(serializer.data)
 

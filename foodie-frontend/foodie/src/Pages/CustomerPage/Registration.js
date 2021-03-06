@@ -14,6 +14,7 @@ function Registration()  {
     customer_address:'',
     customer_phoneNo:'',
     customer_dateOfBirth:'',
+  
   })
  
 const handleChange = (event) =>{
@@ -63,10 +64,10 @@ const handleSubmit =(e) =>{
   </Form.Group>
   <Form.Group controlId="Customer_Date">
       <Form.Label>Date Of Birth</Form.Label>
-    <Form.Control type="datetime-local" name="customer_dateOfBirth" value={customerRegistration.customer_dateOfBirth} onChange={handleChange}  />
+    <Form.Control type="date" name="customer_dateOfBirth" value={customerRegistration.customer_dateOfBirth} onChange={handleChange}  />
   </Form.Group>
   <Form.Group>
-    <Form.File id="Customer_profilePicture" label="Upload Profile Picture" />
+    <Form.File id="Customer_profilePicture" label="Upload Profile Picture" name="customer_profilePicture"  />
   </Form.Group>
 
   <Button variant="primary" type="submit">

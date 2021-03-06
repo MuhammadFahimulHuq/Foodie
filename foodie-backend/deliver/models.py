@@ -12,6 +12,6 @@ class Deliver(models.Model):
     deliver_phoneNo = models.CharField(max_length=20)
     deliver_accountCreated = models.DateTimeField(auto_now_add=True)
     deliver_profilePicture = models.ImageField(blank=True, null=True)
-    deliver_dateOfBirth = models.DateTimeField(blank=False)
+    deliver_dateOfBirth = models.DateField(blank=False)
     deliver_address = models.TextField(max_length=200)
     deliver_rating = models.FloatField(validators=[MinValueValidator(0.0), MaxValueValidator(5.0)], default=1.0)
