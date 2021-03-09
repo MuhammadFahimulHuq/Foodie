@@ -2,8 +2,12 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.http import JsonResponse
-from rest_framework.decorators import api_view
+from rest_framework import status
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
+
+
 from .serializer import DeliverSerializer
 from .models import Deliver
 
@@ -18,18 +22,20 @@ def deliverLists(request):
 
 # FETCH ONE DELIVER THROUGH ID
 def deliverList(request,pk):
-    customer = Deliver.objects.get(id=pk)
+    deliver = Deliver.objects.get(id=pk)
     serializer = DeliverSerializer(deliver, many=False)
     return Response(serializer.data)
 
 
 # CREATE A DELIVER
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def createDeliver(request):
     serializer = DeliverSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
-    return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 #UPDATE A EXISITING DELIVER THROUGH ID

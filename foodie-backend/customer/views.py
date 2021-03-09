@@ -1,10 +1,11 @@
-from django.shortcuts import render
-from django.http import JsonResponse
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from .serializer import CustomerSerializer
+from rest_framework import permissions, status
+from rest_framework.permissions import AllowAny
+
 from .models import Customer
-from django.contrib.auth.models import User
+from rest_framework.response import Response
+from rest_framework.decorators import api_view, permission_classes
+from customer.serializer import CustomerSerializer
+
 
 # FETCH ALL CUSTOMERS
 @api_view(['GET'])
@@ -15,7 +16,7 @@ def customerLists(request):
 
 
 # FETCH ONE CUSTOMER THROUGH ID
-def customerList(request,pk):
+def customerList(request, pk):
     customer = Customer.objects.get(id=pk)
     serializer = CustomerSerializer(customer, many=False)
     return Response(serializer.data)
@@ -23,17 +24,18 @@ def customerList(request,pk):
 
 # CREATE A CUSTOMER
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def createCustomer(request):
     serializer = CustomerSerializer(data=request.data)
     if serializer.is_valid():
-
         serializer.save()
-    return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-#UPDATE A EXISITING CUSTOMER THROUGH ID
+# UPDATE A EXISITING CUSTOMER THROUGH ID
 @api_view(['POST'])
-def updateCustomer(request,pk):
+def updateCustomer(request, pk):
     customer = Customer.objects.get(id=pk)
     serializer = CustomerSerializer(instance=customer, data=request.data)
     if serializer.is_valid():
@@ -41,9 +43,14 @@ def updateCustomer(request,pk):
     return Response(serializer.data)
 
 
-#DELETE A CUSTOMER
+# DELETE A CUSTOMER
 @api_view(['DELETE'])
-def deleteCustomer(request,pk):
-    customer =Customer.objects.get(id=pk)
+def deleteCustomer(request, pk):
+    customer = Customer.objects.get(id=pk)
     customer.delete()
     return Response('Deleted')
+
+
+@api_view(['GET'])
+def helloWorld(self):
+    return Response(data={"hello": "world"}, status=status.HTTP_200_OK)
