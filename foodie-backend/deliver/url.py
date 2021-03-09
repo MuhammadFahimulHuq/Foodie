@@ -7,14 +7,12 @@ urlpatterns = [
 
     path('detail/<str:pk>', views.deliverList, name="deliver-list"),
 
-    path('registration/', views.createDeliver, name="deliver-registration"),
+
 
     path('update/<str:pk>', views.updateDeliver, name="deliver-update"),
 
     path('delete/<str:pk>', views.deleteDeliver, name="deliver-delete")
 
-    path('token/obtain/', jwt_views.TokenObtainPairView.as_view(), name='token_create'),  # override sjwt stock token
 
-    path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
 
 ]

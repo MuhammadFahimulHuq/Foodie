@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'dishes',
     'restaurant',
     'order',
+    'user',
 
 ]
 
@@ -122,7 +123,7 @@ USE_L10N = True
 USE_TZ = True
 
 # Custom user model
-AUTH_USER_MODEL = 'customer.Customer'
+AUTH_USER_MODEL = 'user.User'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/

@@ -28,14 +28,6 @@ def deliverList(request,pk):
 
 
 # CREATE A DELIVER
-@api_view(['POST'])
-@permission_classes([AllowAny])
-def createDeliver(request):
-    serializer = DeliverSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 #UPDATE A EXISITING DELIVER THROUGH ID
