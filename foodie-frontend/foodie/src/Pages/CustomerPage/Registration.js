@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container,Form,Button } from 'react-bootstrap'
+import { Container,Form,Button, Col,Row } from 'react-bootstrap'
 import MainNavbar from '../../Components/MainNavbar'
 import axios from 'axios'
 import { useState } from 'react'
@@ -8,22 +8,34 @@ import { useState } from 'react'
 
 function Registration()  {
   const[ customerRegistration,setCustomerRegistration] =useState({
-    customer_name: '',
-    customer_email:'',
-    customer_password:'',
-    customer_address:'',
-    customer_phoneNo:'',
-    customer_dateOfBirth:'',
-  
+    user:{
+      first_name:'',
+      last_name:'',
+      username:'',
+      email:'',
+      password:'',
+      address:'',
+      dateOfBirth:'',
+      phoneNo:'',
+    
+    }
+   
+
+
   })
  
 const handleChange = (event) =>{
   setCustomerRegistration({
-    ...customerRegistration,
-[event.target.name] :event.target.value
+    ...customerRegistration,user:{
+      ...customerRegistration.user,
+      [event.target.name] :event.target.value
+    } 
+
   })
+ 
 }
 const handleSubmit =(e) =>{
+  
   e.preventDefault()
   axios.post('http://127.0.0.1:8000/customer/registration/',customerRegistration)
     .then((response) => {
@@ -40,31 +52,40 @@ const handleSubmit =(e) =>{
 
     return(
         <div>
-        <div>
-        <MainNavbar /></div>
-            <div>
+        <MainNavbar />
            
             <Container className="pt-5">
-            <h1> Registation Form</h1>
-            <Form onSubmit={handleSubmit}>
-  <Form.Group controlId="Customer_fullName">
-    <Form.Control type="Text" placeholder="Full Name" name="customer_name" value={customerRegistration.customer_name} onChange={handleChange}  />
+              <Row>
+              <Col  xs="6" sm="4">
+
+              <h1> Registation Form</h1>
+            <Form onSubmit={handleSubmit} >
+  <Form.Group controlId="user.first_name">
+    <Form.Control type="Text" placeholder="First Name" name="first_name" value={customerRegistration.first_name} onChange={handleChange}  />
   </Form.Group>
-  <Form.Group controlId="Customer_Email">
-    <Form.Control type="Text" placeholder="Email" name="customer_email" value={customerRegistration.customer_email} onChange={handleChange}  />
+  <Form.Group controlId="user.last_name">
+    <Form.Control type="Text" placeholder="Last Name" name="last_name" value={customerRegistration.last_name} onChange={handleChange}  />
   </Form.Group>
-  <Form.Group controlId="Customer_Password">
-    <Form.Control type="password" placeholder="Password" name="customer_password"  value={customerRegistration.customer_password} onChange={handleChange} />
+  <Form.Group controlId="user.username">
+    <Form.Control type="Text" placeholder="Username" name="username" value={customerRegistration.username} onChange={handleChange}  />
   </Form.Group>
-  <Form.Group controlId="Customer_Address">
-    <Form.Control type="Text" placeholder="Address" name="customer_address" value={customerRegistration.customer_address} onChange={handleChange} />
+  <Form.Group controlId="user.email">
+    <Form.Control type="Text" placeholder="Email" name="email" value={customerRegistration.email} onChange={handleChange}  />
   </Form.Group>
-  <Form.Group controlId="Customer_PhoneNo">
-    <Form.Control type="number" placeholder="Phone Number" name="customer_phoneNo" value={customerRegistration.customer_phoneNo} onChange={handleChange}  />
+  <Form.Group controlId="user.password">
+    <Form.Control type="password" placeholder="Password" name="password"  value={customerRegistration.password} onChange={handleChange} />
   </Form.Group>
-  <Form.Group controlId="Customer_Date">
+  <Form.Group controlId="user.address">
+    <Form.Label>Address</Form.Label>
+    <Form.Control as="textarea" rows={3} name="address" value={customerRegistration.address} onChange={handleChange} />
+  </Form.Group>
+
+  <Form.Group controlId="user.phoneNo">
+    <Form.Control type="number" placeholder="Phone Number" name="phoneNo" value={customerRegistration.phoneNo} onChange={handleChange}  />
+  </Form.Group>
+  <Form.Group controlId="user.dateOfBirth">
       <Form.Label>Date Of Birth</Form.Label>
-    <Form.Control type="date" name="customer_dateOfBirth" value={customerRegistration.customer_dateOfBirth} onChange={handleChange}  />
+    <Form.Control type="date" name="dateOfBirth" value={customerRegistration.dateOfBirth} onChange={handleChange}  />
   </Form.Group>
   <Form.Group>
     <Form.File id="Customer_profilePicture" label="Upload Profile Picture" name="customer_profilePicture"  />
@@ -74,10 +95,13 @@ const handleSubmit =(e) =>{
     Submit
   </Button>
 </Form>
-            </Container>
+            
 
-            </div>
-          
+                  </Col>
+              </Row>
+         
+              </Container>
+
           
            
         </div>
