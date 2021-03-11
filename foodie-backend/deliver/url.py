@@ -7,7 +7,7 @@ urlpatterns = [
 
     path('detail/<str:pk>', views.deliverList, name="deliver-list"),
 
-
+    path('registration/',views.createDeliver,name="deliver-create"),
 
     path('update/<str:pk>', views.updateDeliver, name="deliver-update"),
 
