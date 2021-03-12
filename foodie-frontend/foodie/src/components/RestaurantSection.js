@@ -1,6 +1,6 @@
 import React from 'react'
 import {Jumbotron,Button, Container} from 'react-bootstrap'
-
+import {Link} from 'react-router-dom'
 
 
 function RestaurantSection(){
@@ -15,7 +15,7 @@ It's simple: we list your menu online, help you process orders, pick them up, an
 Interested? Let's start our partnership today!
   </p>
   <p>
-    <Button variant="primary">Get Started</Button>
+  <Link to='/restaurant/registration'> <Button variant="primary">Get Started</Button></Link>
   </p>
 </Jumbotron>
   </Container>

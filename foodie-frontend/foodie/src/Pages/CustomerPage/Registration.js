@@ -58,7 +58,7 @@ const handleSubmit =(e) =>{
               <Row>
               <Col  xs="6" sm="4">
 
-              <h1> Registation Form</h1>
+              <h4>Customer Registation Form</h4>
             <Form onSubmit={handleSubmit} >
   <Form.Group controlId="user.first_name">
     <Form.Control type="Text" placeholder="First Name" name="first_name" value={customerRegistration.first_name} onChange={handleChange}  />

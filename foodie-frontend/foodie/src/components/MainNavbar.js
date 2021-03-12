@@ -17,7 +17,7 @@ function MainNavbar() {
            <Link to="/">FOODIE</Link>
            </Navbar.Brand>
           <Navbar.Text>
-          join our foodie rider team <Link to="/">Apply now!</Link>
+          join our foodie rider team <Link to="/deliver/registration">Apply now!</Link>
         </Navbar.Text>
        <Link to="/customer/registration">LOGIN</Link>
        

@@ -2,17 +2,20 @@
 import './App.css'
 import Home from './Pages/Home'
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
-import Registration from './Pages/CustomerPage/Registration'
+import CustomerRegistration from './Pages/CustomerPage/Registration'
 import Profile from './Pages/CustomerPage/Profile';
-
+import DeliverRegistration from './Pages/DeliverPage/Registration'
+import RestaurantRegistration from './Pages/RestaurantPage/Registration'
 
 function App() {
   return (
   <Router>
 
 <Switch>
+<Route path='/restaurant/registration' component={RestaurantRegistration} />
+<Route path='/deliver/registration' component={DeliverRegistration} />
 <Route path ='/customer/profile' component = {Profile} />
-<Route path='/customer/registration' component={Registration}/>
+<Route path='/customer/registration' component={CustomerRegistration}/>
 <Route path='/' exact component={Home} />
 
 </Switch>
