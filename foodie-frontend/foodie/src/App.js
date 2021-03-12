@@ -6,12 +6,14 @@ import CustomerRegistration from './Pages/CustomerPage/Registration'
 import Profile from './Pages/CustomerPage/Profile';
 import DeliverRegistration from './Pages/DeliverPage/Registration'
 import RestaurantRegistration from './Pages/RestaurantPage/Registration'
+import RestaurantDashboard from './Pages/RestaurantPage/RestaurantDashboard'
 
 function App() {
   return (
   <Router>
 
 <Switch>
+<Route path='/restaurant/dashboard' component={RestaurantDashboard} />
 <Route path='/restaurant/registration' component={RestaurantRegistration} />
 <Route path='/deliver/registration' component={DeliverRegistration} />
 <Route path ='/customer/profile' component = {Profile} />
