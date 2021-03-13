@@ -51,6 +51,3 @@ def deleteCustomer(request, pk):
     return Response('Deleted')
 
 
-@api_view(['GET'])
-def helloWorld(self):
-    return Response(data={"hello": "world"}, status=status.HTTP_200_OK)

@@ -7,7 +7,6 @@ class Dishes(models.Model):
     Dishes_name = models.CharField(max_length=100)
     Dishes_price = models.FloatField()
     Dishes_picture = models.ImageField(blank=True, null=True)
-    Dishes_discount = models.FloatField()
-    Dishes_category = models.CharField(max_length=100)
-    Restaurant_id = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
+    Dishes_discount = models.FloatField(blank=True,null=True)
+
 

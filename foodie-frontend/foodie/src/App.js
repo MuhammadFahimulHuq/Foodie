@@ -8,6 +8,7 @@ import DeliverRegistration from './Pages/DeliverPage/Registration'
 import RestaurantRegistration from './Pages/RestaurantPage/Registration'
 import RestaurantDashboard from './Pages/RestaurantPage/RestaurantDashboard'
 
+
 function App() {
   return (
   <Router>
